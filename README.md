@@ -6,7 +6,7 @@ The primary focus of this project is to provide hands-on experience with working
 # Usage
 Per usual, clone repo like so:
 ```
-git clone https://github.com/MiikaViini/flight-deal-finder.gitcd flight-deal-finder
+git clone https://github.com/MiikaViini/flight-deal-finder.git
 ```
 Enter the repo and start script:
 ```
