@@ -20,15 +20,12 @@ class SendEmail:
         date_str, time_str = date_time_str.split("T")
         date = dt.datetime.strptime(date_str, "%Y-%m-%d").date()
         time = dt.datetime.strptime(time_str[:-5], "%H:%M:%S").time()
-        date_time_list.append(date)
-        date_time_list.append(time)
+        date_time_list += [date, time]
         return date_time_list
 
     def append_to_message(self, flight_json):
-        message = "Subject: Flight deals\n\n"
-        message += f'Price {flight_json["price"]} euros, '
-        message += f'From {flight_json["cityFrom"]} '
-        message += f"to {flight_json['cityTo']}.\n"
-        message += f"Book tickets from {flight_json['deep_link']}\n"
-        message += f'Departure {self.parse_time(flight_json["local_departure"])}\n\n'
+        message = f'Subject: Flight deals\n\nPrice {flight_json["price"]} euros, ' \
+                  f'From {flight_json["cityFrom"]} to {flight_json["cityTo"]}.\n' \
+                  f'Book tickets from {flight_json["deep_link"]}\n' \
+                  f'Departure {self.parse_time(flight_json["local_departure"])}\n\n'
         return message
