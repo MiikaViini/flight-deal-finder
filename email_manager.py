@@ -8,7 +8,8 @@ class SendEmail:
         self.my_email = os.getenv("EMAIL")
         self.my_pass = os.getenv("EMAIL_PASS")
 
-    def send_mail(self, message):
+    def send_mail(self, message, user_list):
+        print(user_list)
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(user=self.my_email, password=self.my_pass)
