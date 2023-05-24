@@ -14,7 +14,6 @@ class FlightSearch:
             "date_from": dates[0],
             "date_to": dates[1]
         }
-        print(self.kiwi_headers["apikey"])
         self.get_flight_info()
 
     def get_flight_info(self):

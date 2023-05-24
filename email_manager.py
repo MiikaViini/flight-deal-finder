@@ -13,7 +13,11 @@ class SendEmail:
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(user=self.my_email, password=self.my_pass)
-            connection.sendmail(from_addr=self.my_email, to_addrs=self.my_email, msg=message)
+            for user in user_list["users"]:
+                try:
+                    connection.sendmail(from_addr=self.my_email, to_addrs=user["email"], msg=message)
+                except smtplib.SMTPRecipientsRefused:
+                    continue
 
     def parse_time(self, time):
         date_time_list = []
@@ -25,8 +29,10 @@ class SendEmail:
         return date_time_list
 
     def append_to_message(self, flight_json):
+        date_time = self.parse_time(flight_json["local_departure"])
         message = f'Subject: Flight deals\n\nPrice {flight_json["price"]} euros, ' \
                   f'From {flight_json["cityFrom"]} to {flight_json["cityTo"]}.\n' \
                   f'Book tickets from {flight_json["deep_link"]}\n' \
-                  f'Departure {self.parse_time(flight_json["local_departure"])}\n\n'
+                  f'Departure {date_time[0]} ' \
+                  f'{date_time[1]}\n\n'
         return message
