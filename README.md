@@ -1,7 +1,9 @@
 # Flight deal finder
 The Flight Deal Finder is a practical application developed as part of an Udemy course. This application, starting from day 39 of the course, leverages the powerful Kiwi API to search for affordable flights to pre-defined destinations. The app retrieves the destination information from a Google Sheet using the Sheety API.
-
 The primary focus of this project is to provide hands-on experience with working with APIs and harnessing their capabilities. By utilizing the Kiwi API and integrating it with the Google Sheet through the Sheety API, learners gain valuable insights into API usage and learn how to leverage external data sources effectively.
+
+### UPDATES:
+Now flight-deal-finder utilizes Sheety to get users from Google Sheets and send email all the addresses found from the list.
 
 # Usage
 Per usual, clone repo like so:
